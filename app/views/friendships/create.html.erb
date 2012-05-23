@@ -1,0 +1,41 @@
+
+<% title "Pages" %>
+
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>Name</th>
+    <th>Invited</th>
+    <th>Invited By</th>
+    <th>Friends</th>
+  </tr>
+    <tr>
+      <td><%= current_user.email %></td>
+      <td><% my_requests = @current_user.pending_invited %>
+	   <ul>
+		<% for user in my_requests %>
+			<li>
+		      <%= user.email %>
+		    </li> 
+		<% end %>   
+		</ul>
+      </td>
+      <td><% pending_requests = @current_user.pending_invited_by  %>
+        <ul>
+		  <% for user in pending_requests %>
+			<li>
+		      <%= user.email %>
+		      
+		      <%= link_to "Confirm friend?", friend_path(user), :method => "put" %>
+		    </li> 
+		  <% end %>   
+		</ul>
+      </td>
+      <td> <% my_friends= current_user.friends %>
+      	<% for user in my_friends %>
+			<li>
+		      <%= user.email %>
+		    </li> 
+		<% end %> 
+      </td>
+    </tr>
+</table>

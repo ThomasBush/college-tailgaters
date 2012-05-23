@@ -1,0 +1,57 @@
+<% title "User" %>
+
+<p>
+  <%= image_tag @user.avatar_url(:thumb).to_s, :class => 'thumbnail' %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<p>
+  <strong>Team:</strong>
+  <%= @user.team.name %>
+</p>
+<p>
+  <strong>Last Sign In At:</strong>
+  <%= @user.last_sign_in_at %>
+</p>
+<p>
+  <strong>Role:</strong>
+  <%= @user.role %>
+</p>
+
+<p>
+  <% if can? :update, @user %>
+    <%= link_to "Edit", edit_user_path(@user) %> |
+  <% end %>
+  <% if can? :destroy, @user %>
+    <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>	
+  <%= link_to "View All", users_path %>
+</p>
+
+<!-- if a user follows the same team as current_user display img, link, email -->
+<h3>Community</h3>
+<ul>
+<% for user in @users %>
+  <% if user.team_id == @user.team.id %>
+  		<li>
+  		<%= link_to(user, :class => "popover-with-html", :title => "#{user.email.to_s.html_safe}", "data-content" => "#{image_tag user.avatar_url(:mini).to_s.html_safe}")  do %>
+			 <%= image_tag user.avatar_url(:nano).to_s %> <br/>
+		<% end %>
+	    </li>	
+  <% end %>				
+<% end %>	
+</ul>
+
+<h3>Friends</h3>
+<ul>
+<% my_friends = @user.friends  %>
+<% for user in my_friends %>
+	<li>
+	<%= link_to(user, :class => "popover-with-html", :title => "#{user.email.to_s.html_safe}", "data-content" => "#{image_tag user.avatar_url(:mini).to_s.html_safe}")  do %>
+		 <%= image_tag user.avatar_url(:nano).to_s %> <br/>
+	<% end %>
+    </li>				
+<% end %>	
+</ul>

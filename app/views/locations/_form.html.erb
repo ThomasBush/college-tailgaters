@@ -1,0 +1,15 @@
+<%= simple_form_for @location, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset> 
+  	<%= f.input :name %>
+    <%= f.association :loc_categories, as: :check_boxes %>
+    <%= f.association :teams, as: :check_boxes %>
+    <%= f.input :address %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :zip %>
+	<div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', locations_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

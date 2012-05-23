@@ -1,0 +1,32 @@
+<% title "Location" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @location.name %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @location.address %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%= @location.city %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%= @location.state %>
+</p>
+<p>
+  <strong>Zip:</strong>
+  <%= @location.zip %>
+</p>
+
+<p>
+  <% if can? :update, @location %>
+  	<%= link_to "Edit", edit_location_path(@location) %> |
+  <% end %>
+  <% if can? :destroy, @location %>
+    <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>	
+  <%= link_to "View All", locations_path %>
+</p>

@@ -1,0 +1,29 @@
+<% title "Conferences" %>
+
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>Name</th>
+    <th class="actions">Actions</th>
+  </tr>
+  <% for conference in @conferences %>
+    <tr>
+      <td><%= link_to conference.name, edit_conference_path(conference) %></td>
+      
+      <td>
+          <%= link_to conference, :class =>'btn' do %>
+			<i class="icon-eye-open"></i>
+		  <% end %>
+		  
+		  <%= link_to edit_conference_path(conference), :class =>'btn' do %>
+			<i class="icon-edit"></i>
+		  <% end %>
+		  
+		  <%= link_to conference, :confirm => 'Are you sure?', :method => :delete, :class =>'btn btn-danger' do %>
+			<i class="icon-trash icon-white"></i>
+		  <% end %> 
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Conference", new_conference_path, :class =>'btn btn-primary' %></p>

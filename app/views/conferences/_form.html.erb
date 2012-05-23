@@ -1,0 +1,10 @@
+<%= simple_form_for @conference, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset> 
+    <%= f.input :name %>
+	<%= f.association :division %>
+	<div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', conferences_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

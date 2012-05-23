@@ -1,0 +1,26 @@
+<% title "Conference" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @conference.name %>
+ 
+</p>
+<p>
+  <strong>Teams (<%= @conference.teams.count(:all) %>)</strong>
+  <ul>
+  <% @conference.teams.each do |team|%>
+  		<li>
+  		<%= link_to team.name, team %>
+	    </li>
+  <% end %>	
+  </ul>
+</p>
+<p>
+  <% if can? :update, @conference %>
+  	<%= link_to "Edit", edit_conference_path(@conference) %> |
+  <% end %>
+  <% if can? :destroy, @conference %>
+  	<%= link_to "Destroy", @conference, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>									
+  <%= link_to "View All", conferences_path %>
+</p>

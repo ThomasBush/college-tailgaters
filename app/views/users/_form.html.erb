@@ -1,0 +1,23 @@
+<%= form_for @user, :html => {:multipart =>true} do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  
+  <p>
+    <%= f.label :role %><br />
+    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+  </p>
+  
+  <p>
+	<%= f.label :team %><br />
+	<%= f.collection_select(:team_id, @teams, :id, :name, :include_blank => "Please select") %>
+  </p>
+  
+  <p>
+    <%= f.file_field :avatar %>
+  </p>
+  
+  <p><%= f.submit %></p>
+<% end %>

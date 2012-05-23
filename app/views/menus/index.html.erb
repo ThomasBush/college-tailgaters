@@ -1,0 +1,19 @@
+<% title "Menus" %>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Items</th>
+  </tr>
+  <% for menu in @menus %>
+    <tr>
+      <td><%= menu.user_id %></td>
+     
+      <td><%= link_to "Show", menu %></td>
+      <td><%= link_to "Edit", edit_menu_path(menu) %></td>
+      <td><%= link_to "Destroy", menu, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Menu", new_menu_path %></p>

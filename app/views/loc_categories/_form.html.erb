@@ -1,0 +1,10 @@
+<%= simple_form_for @loc_category, :html => { :class => 'form-horizontal', :multipart =>true } do |f| %>
+  <fieldset> 
+    <%= f.input :name %>
+    <%= f.file_field :image, :label => 'Category image' %>
+  	<div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', loc_categories_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

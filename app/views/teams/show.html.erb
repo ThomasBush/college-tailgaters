@@ -1,0 +1,42 @@
+<% title "Team" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+<p>
+  <strong>Nickname:</strong>
+  <%= @team.nickname %>
+</p>
+<p>
+  <strong>Shortname:</strong>
+  <%= @team.shortname %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @team.street %><br/>
+  <%= @team.city %>, <%= @team.state %><br/>
+  <%= @team.zip %>
+</p>
+<p>
+  <strong>Community (<%= @team.users.count(:all) %>)</strong>
+  <ul>
+  <% @team.users.each do |user|%>
+  		<li>
+  		<%= link_to user  do %>
+			 <%= image_tag user.avatar_url(:thumb).to_s, :class => 'thumbnail' %> <br/>
+			 <%= user.email %>
+		<% end %>
+	    </li>
+  <% end %>	
+  </ul>
+</p>
+<p>
+  <% if can? :update, @team %>
+    <%= link_to "Edit", edit_team_path(@team) %> |
+  <% end %>
+  <% if can? :destroy, @team %>
+    <%= link_to "Destroy", @team, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>	
+  <%= link_to "View All", teams_path %>
+</p>

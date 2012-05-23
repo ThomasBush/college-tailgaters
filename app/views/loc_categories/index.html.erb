@@ -1,0 +1,29 @@
+<% title "Location Categories" %>
+
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>Name</th>
+    <th class="actions">Actions</th>
+  </tr>
+  <% for loc_category in @loc_categories %>
+    <tr>
+      <td><%= link_to loc_category.name, edit_loc_category_path(loc_category) %></td>
+      
+      <td>
+          <%= link_to loc_category, :class =>'btn' do %>
+			<i class="icon-eye-open"></i>
+		  <% end %>
+		  
+		  <%= link_to edit_loc_category_path(loc_category), :class =>'btn' do %>
+			<i class="icon-edit"></i>
+		  <% end %>
+		  
+		  <%= link_to loc_category, :confirm => 'Are you sure?', :method => :delete, :class =>'btn btn-danger' do %>
+			<i class="icon-trash icon-white"></i>
+		  <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Location Category", new_loc_category_path, :class =>'btn btn-primary' %></p>

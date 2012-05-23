@@ -1,0 +1,16 @@
+<% title "Location Category" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @loc_category.name %>
+</p>
+
+<p>
+  <% if can? :update, @loc_category %>
+  	<%= link_to "Edit", edit_loc_category_path(@loc_category) %> |
+  <% end %>
+  <% if can? :destroy, @loc_category %>
+    <%= link_to "Destroy", @loc_category, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>	
+  <%= link_to "View All", loc_categories_path %>
+</p>

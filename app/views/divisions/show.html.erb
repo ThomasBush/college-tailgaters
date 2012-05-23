@@ -1,0 +1,16 @@
+<% title "Division" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @division.name %>
+</p>
+
+<p>
+  <% if can? :update, @division %>
+  	<%= link_to "Edit", edit_division_path(@division) %> |
+  <% end %>
+  <% if can? :destroy, @division %>
+    <%= link_to "Destroy", @division, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>	
+  <%= link_to "View All", divisions_path %>
+</p>

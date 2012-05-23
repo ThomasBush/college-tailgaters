@@ -1,0 +1,9 @@
+<%= simple_form_for @division, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset> 
+    <%= f.input :name %>
+	<div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', divisions_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

@@ -1,0 +1,17 @@
+<% title "New Friendship" %>
+
+<ul>
+# <% for user in @friends %>
+# 	<li>
+#       <% if current_user.friend_with? user = user.email %>
+#         You are already friends!
+#       <% elsif current_user.invited? user = user.email %>
+#         Pending request ...
+#       <% elsif user.invited? current_user = user.email %>
+#         <%= link_to "Confirm friend?", friend_path(user), :method => "put" %>
+#       <% else %>
+#         <%= link_to "Add friend?", friends_path(:user_id => user), :method => "post" %>
+#       <% end %>
+#     </li> 
+# <% end %>   
+</ul>

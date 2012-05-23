@@ -1,0 +1,13 @@
+<% title @page.name %>
+<h1><%= @page.name %></h1>
+<%= simple_format h(@page.content) %>
+
+<p>
+  <% if can? :update, @page %>
+  	<%= link_to "Edit", edit_page_path(@page) %> |
+  <% end %>
+  <% if can? :destroy, @page %>
+    <%= link_to "Destroy", @page, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>	
+  <%= link_to "View All", pages_path %>
+</p>

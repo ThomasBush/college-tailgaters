@@ -1,0 +1,11 @@
+<%= simple_form_for @menu, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset> 
+
+  	<%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.association :loc_categories, as: :check_boxes %>
+	<div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', menus_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>
